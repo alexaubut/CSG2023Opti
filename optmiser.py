@@ -1,2 +1,3 @@
 class Optimisier():
-    pass
+    def get_transactions(data):
+        pass
