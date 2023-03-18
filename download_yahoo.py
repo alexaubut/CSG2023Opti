@@ -18,6 +18,16 @@ class Title:
     
     def __repr__(self) -> str:
         return self.__str__()
+    
+    def get_date(self, date: str):
+        for day in self.days:
+            if day.date == date:
+                return day
+            
+    def get_date_by_index(self, date:str):
+        for index, day in enumerate(self.days):
+            if day.date == date:
+                return index
 
 class DownloadYahoo:
     def __init__(self, titles_str:list[str], start: str, end:str ):
