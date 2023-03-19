@@ -2,7 +2,7 @@ from download_yahoo import DownloadYahoo
 from optmiser import Optimisier
 
 if __name__ == "__main__":
-    #test_title = ["AAL", "DAL", "UAL", "LUV", "HA"]
+    test_title = ["AAL", "DAL", "UAL", "LUV", "HA"]
     final_title = ["GOOG", "AMZN", "META", "MSFT", "AAPL"]
     start_date = "2023-01-01"
     end_date = "2023-02-01"

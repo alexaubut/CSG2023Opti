@@ -1,0 +1,33 @@
+[{
+    "date": "2023-01-03",
+    "action": "BUY",
+    "ticker": "HA"
+    }, {
+    "date": "2023-01-09",
+    "action": "SELL",
+    "ticker": "HA"
+    }, {
+    "date": "2023-01-10",
+    "action": "BUY",
+    "ticker": "UAL"
+    }, {
+    "date": "2023-01-17",
+    "action": "SELL",
+    "ticker": "UAL"
+    }, {
+    "date": "2023-01-18",
+    "action": "BUY",
+    "ticker": "DAL"
+    }, {
+    "date": "2023-01-23",
+    "action": "SELL",
+    "ticker": "DAL"
+    }, {
+    "date": "2023-01-24",
+    "action": "BUY",
+    "ticker": "AAL"
+    }, {
+    "date": "2023-01-31",
+    "action": "SELL",
+    "ticker": "AAL"
+    }]

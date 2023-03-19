@@ -8,7 +8,6 @@ class Transaction():
         self.ticker = ticker
 
     def __str__(self) -> str:
-        #return json.dumps(self)
         return """{{ 
             "date": "{0}",
             "action": "{1}",
