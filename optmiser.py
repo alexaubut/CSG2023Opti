@@ -3,22 +3,19 @@ from download_yahoo import Day, Title
 
 class Optimisier():
     def get_transactions(self, data: list[Title]) -> list[Transaction]:
-        #TODO gérer premier achat
-        first_title = None
+        active_title = None
         transactions = []
         for day in data[0].days[:-2]:
-            transaction, new_title = self.get_best_transaction(data, first_title, day)
+            transaction, new_title = self.get_best_transaction(data, active_title, day)
             if transaction:
-                first_title = new_title
+                active_title = new_title
                 transactions.append(transaction)
-        if first_title:
-            transactions.append(Transaction(data[0].days[-1], "SELL", first_title.title))
+        if active_title:
+            transactions.append(Transaction(data[0].days[-1], "SELL", active_title.title))
         return transactions
-        #TODO gérer 2 derniers jours index error
-
 
     def get_delta(self, first_day:Day, second_day:Day) -> float:
-        return second_day.open - first_day.open
+        return second_day.open / first_day.open
     
     def get_best_transaction(self, data: list[Title], active_title: Title or None, day_obj: Day) -> tuple[Transaction or None, Title or None]:
         day = day_obj.date
