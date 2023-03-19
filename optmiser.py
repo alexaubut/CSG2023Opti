@@ -4,13 +4,15 @@ from download_yahoo import Day, Title
 class Optimisier():
     def get_transactions(self, data: list[Title]) -> list[Transaction]:
         #TODO gérer premier achat
-        first_title = data[0]
+        first_title = None
         transactions = []
-        for day in data[0].days:
-            transaction = self.get_best_transaction(data, first_title, day.date)
-            print(day.date)
+        for day in data[0].days[:-2]:
+            transaction, new_title = self.get_best_transaction(data, first_title, day.date)
             if transaction:
+                first_title = new_title
                 transactions.append(transaction)
+        if first_title:
+            transactions.append(Transaction(data[0].days[-1].date, "SELL", first_title.title))
         return transactions
         #TODO gérer 2 derniers jours index error
 
@@ -22,7 +24,7 @@ class Optimisier():
         delta_active_title = None
         if active_title:
             delta_active_title = self.get_delta(active_title.get_date(day), active_title.days[active_title.get_date_by_index(day) + 2] )
-        best_delta = 0
+        best_delta = -999999999
         best_title = None
         for title in data:
             delta = self.get_delta(title.days[title.get_date_by_index(day) + 1], title.days[title.get_date_by_index(day) + 2])
@@ -30,8 +32,8 @@ class Optimisier():
                 best_title = title
                 best_delta = delta
         if delta_active_title:
-            if delta_active_title < best_delta:
-                return Transaction(day, "SELL", best_title.title)
+            if delta_active_title < 0 or delta_active_title < best_delta:
+                return (Transaction(day, "SELL", active_title.title), None)
             else:
-                return None
-        return Transaction(day, "BUY", best_title.title)
+                return None, None
+        return (Transaction(day, "BUY", best_title.title), best_title)
