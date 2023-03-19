@@ -20,7 +20,7 @@ class Optimisier():
     def get_delta(self, first_day:Day, second_day:Day) -> float:
         return second_day.open - first_day.open
     
-    def get_best_transaction(self, data: list[Title], active_title: Title or None, day: str) -> Transaction or None:
+    def get_best_transaction(self, data: list[Title], active_title: Title or None, day: str) -> tuple(Transaction or None, Title or None):
         delta_active_title = None
         if active_title:
             delta_active_title = self.get_delta(active_title.get_date(day), active_title.days[active_title.get_date_by_index(day) + 2] )
