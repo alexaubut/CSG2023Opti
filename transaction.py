@@ -1,8 +1,9 @@
 import json
-
+from download_yahoo import Day
 class Transaction():
-    def __init__(self, date, action, ticker) -> None:
-        self.date = date
+    def __init__(self, date: Day, action, ticker) -> None:
+        self.day = date
+        self.date = date.date
         self.action = action
         self.ticker = ticker
 
